@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import Group, User, AbstractUser
+from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.base_user import BaseUserManager
 from django.utils.translation import gettext_lazy as _
 
@@ -52,8 +52,8 @@ class CustomUser(AbstractUser):
         return self.email
 
 
-ceo = CustomUser.objects.create(email="douglasgenetic@gmail.com",
-                                name="Douglas Fernandes", cpf="13359863402")
-ceo.set_password("Pass@2024")
-ceo.groups.add(Group.objects.get(name="CEO"))
-ceo.save()
+# ceo = CustomUser.objects.create(email="douglasgenetic@gmail.com",
+#                                 name="Douglas Fernandes", cpf="13359863402")
+# ceo.set_password("Pass@2024")
+# ceo.groups.add(Group.objects.get(name="CEO"))
+# ceo.save()
