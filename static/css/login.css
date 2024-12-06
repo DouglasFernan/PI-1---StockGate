@@ -1,0 +1,7 @@
+body {
+    background-color: brown;
+    height: 100vh;  /* A altura da tela */
+    width: 100vw;
+    margin: 0;      /* Remover margens padrão */
+    padding: 0;     /* Remover o preenchimento padrão */
+}
