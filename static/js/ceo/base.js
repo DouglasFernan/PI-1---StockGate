@@ -6,14 +6,13 @@ document.querySelectorAll('.dropdown-btn').forEach(button => {
 });
 
 function toggleModal(event) {
-    // Prevenir o evento de clique de se propagar para evitar que o clique no modal feche o modal
     event.stopPropagation();
 
     // Verifica se o clique foi no #info ou no #openModalBtn
     const modal = document.getElementById("modal");
     const isVisible = modal.style.display === "block";
 
-    // Se o modal já está aberto, esconde-o, caso contrário, exibe-o
+    // Se o modal já está aberto ele fecha, caso contrário, aparece
     if (isVisible) {
         modal.style.display = "none";
     } else {

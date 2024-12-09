@@ -49,18 +49,18 @@ body {
 }
 
 .dropdown-modal {
-    display: none; /* Modal começa oculto */
+    display: none; 
     position: absolute;
-    top: 100%; /* Faz o modal abrir logo abaixo do elemento clicado */
+    top: 100%;
     left: 0;
     background-color: #fff;
     width: 250px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000; /* Modal fica acima de outros elementos */
+    z-index: 1000; 
     border-radius: 5px;
     padding: 10px 0;
-    margin-top: 10px; /* Espaço entre o header e o modal */
-    transition: opacity 0.3s ease; /* Transição suave para o modal */
+    margin-top: 10px; 
+    transition: opacity 0.3s ease; 
 }
 
 .dropdown-modal.show {
@@ -181,7 +181,7 @@ body {
 .logout-btn {
     display: flex;
     align-items: center;
-    background-color: #667A8A; /* Cor de fundo cinza */
+    background-color: #667A8A;
     color: white;
     height: 50px;
     width: 230px;
