@@ -33,7 +33,7 @@ def login_view(request):
         username = request.POST["email"]
         password = request.POST["password"]
         user = authenticate(request, username=username, password=password)
-        print(user, username, password)
+        # print(user, username, password,)
         # breakpoint()
         if user is not None:
             login(request, user)
