@@ -56,7 +56,7 @@ ROOT_URLCONF = "stockgate.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": ['templates'],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -130,3 +130,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Custom User
 
 AUTH_USER_MODEL = "users.CustomUser"
+
+# Files
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

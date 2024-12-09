@@ -2,6 +2,8 @@ from django.views.generic import FormView
 from django.urls import path
 from . import views
 from . import forms
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -12,3 +14,6 @@ urlpatterns = [
     path('vendedor/dashboard/', views.vendedor_dashboard, name='vendedor_dashboard'),
     path('registration/', views.UserRegistration.as_view(), name='registration' )
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

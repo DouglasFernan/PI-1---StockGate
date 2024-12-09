@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.base_user import BaseUserManager
 from django.utils.translation import gettext_lazy as _
+from django.conf import settings
 
 
 class CustomUserManager(BaseUserManager):
@@ -35,14 +36,16 @@ class CustomUser(AbstractUser):
     last_name = None
     username = None
     USERNAME_FIELD = "email"
-    email = models.EmailField("email address", unique=True)
-    name = models.CharField("first name", max_length=150)
-    cpf = models.CharField("first name", max_length=15)
+    email = models.EmailField("email", unique=True)
+    name = models.CharField("name", max_length=150)
+    cpf = models.CharField("cpf", max_length=15)
+    profile_picture = models.ImageField(upload_to='profile_pictures/', null=True, blank=True, default='profile_pictures/default.jpg')
     REQUIRED_FIELDS = []
+    
+    def save(self, *args, **kwargs):
+        if not self.profile_picture:
+            self.profile_picture = 'profile_pictures/default.jpg'
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.email
-
-
-class Product(models.Model):
-    pass

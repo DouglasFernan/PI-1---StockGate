@@ -1,4 +1,10 @@
-<h1>Bem vindo, ceo!</h1>
-<h2> {{request.user}} </h2>
+{% extends 'users/ceo/base.html' %}
 
-<a href="{% url "logout" %}">logout</a>
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<section>
+    <h1>Bem-vindo ao Dashboard</h1>
+    <p>Esta é a página inicial do sistema Stock Gate.</p>
+</section>
+{% endblock %}
