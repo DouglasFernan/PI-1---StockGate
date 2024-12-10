@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.base_user import BaseUserManager
 from django.utils.translation import gettext_lazy as _
 from django.conf import settings
+from django.core.validators import RegexValidator
 
 
 class CustomUserManager(BaseUserManager):
@@ -50,7 +51,132 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.email
     
+class Fornecedor(models.Model):
+    name = models.CharField("name", max_length=100)
+    empresa = models.CharField("company name", max_length=100)
+    email = models.EmailField("email", max_length=254, unique=True)
+    description = models.TextField("description", blank=True)
 
-class Product(models.Model):
-    pass
+    class Meta:
+        verbose_name = "Fornecedor"  # Nome singular
+        verbose_name_plural = "Fornecedores"  # Nome plural
+
+    def __str__(self):
+        return f"Venda {self.pk} - {self.cliente}"
+
+    def __str__(self):
+        return self.name
+
+
+class Categoria(models.Model):
+    name = models.CharField("name", max_length=100)
+    description = models.TextField("description", blank=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Produto(models.Model):
+    name = models.CharField("name", max_length=150)
+    price = models.DecimalField("price", max_digits=10, decimal_places=2)
+    quantity = models.PositiveIntegerField("quantity")
+    description = models.TextField("description", blank=True)
+    product_picture = models.ImageField(
+        upload_to='product_pictures/', null=True, blank=True, default='product_pictures/default.jpg'
+    )
+    fornecedor = models.ForeignKey(
+        Fornecedor, verbose_name=_("Fornecedor"), null=True, on_delete=models.SET_NULL
+    )
+    categoria = models.ForeignKey(
+        Categoria, verbose_name=_("Categoria"), on_delete=models.CASCADE
+    )
+
+    def __str__(self):
+        return self.name
+
+
+class Cliente(models.Model):
+    STATES = [
+        ("AC", "Acre"),
+        ("AL", "Alagoas"),
+        ("AP", "Amapá"),
+        ("AM", "Amazonas"),
+        ("BA", "Bahia"),
+        ("CE", "Ceará"),
+        ("DF", "Distrito Federal"),
+        ("ES", "Espírito Santo"),
+        ("GO", "Goiás"),
+        ("MA", "Maranhão"),
+        ("MT", "Mato Grosso"),
+        ("MS", "Mato Grosso do Sul"),
+        ("MG", "Minas Gerais"),
+        ("PA", "Pará"),
+        ("PB", "Paraíba"),
+        ("PR", "Paraná"),
+        ("PE", "Pernambuco"),
+        ("PI", "Piauí"),
+        ("RJ", "Rio de Janeiro"),
+        ("RN", "Rio Grande do Norte"),
+        ("RS", "Rio Grande do Sul"),
+        ("RO", "Rondônia"),
+        ("RR", "Roraima"),
+        ("SC", "Santa Catarina"),
+        ("SP", "São Paulo"),
+        ("SE", "Sergipe"),
+        ("TO", "Tocantins"),
+    ]
+    name = models.CharField("name", max_length=150)
+    email = models.EmailField("email", max_length=254, unique=True)
+    phone = models.CharField("phone", max_length=20)
+    cpf = models.CharField(
+        "cpf",
+        max_length=15,
+        validators=[RegexValidator(regex=r'^\d{3}\.\d{3}\.\d{3}-\d{2}$', message="Invalid CPF format.")],
+    )
+    neighborhood = models.CharField("neighborhood", max_length=100)
+    city = models.CharField("city", max_length=100)
+    street = models.CharField("street", max_length=100)
+    number = models.CharField("house number", max_length=10)
+    cep = models.CharField(
+        "cep",
+        max_length=9,
+        validators=[RegexValidator(regex=r'^\d{5}-\d{3}$', message="Invalid CEP format.")],
+    )
+    uf = models.CharField("uf", max_length=2, choices=STATES)
+    created_at = models.DateTimeField("created at", auto_now_add=True)
+    updated_at = models.DateTimeField("updated at", auto_now=True)
+
+    class Meta:
+        verbose_name = "Cliente"
+        verbose_name_plural = "Clientes"
+
+    def __str__(self):
+        return f"{self.name} ({self.cpf})"
+
+
+class Vendas(models.Model):
+    PAYMENT_METHODS = [
+        ("card", "Cartão"),
+        ("pix", "Pix"),
+        ("cash", "Dinheiro"),
+    ]
+    vendedor = models.ForeignKey(
+        settings.AUTH_USER_MODEL, verbose_name=_("vendedor"), null=True, on_delete=models.SET_NULL
+    )
+    cliente = models.ForeignKey(
+        Cliente, verbose_name=_("cliente"), null=True, on_delete=models.SET_NULL
+    )
+    produto = models.ForeignKey(
+        Produto, verbose_name=_("produto"), null=True, on_delete=models.SET_NULL
+    )
+    quantity = models.PositiveIntegerField("quantity")
+    created_at = models.DateTimeField("created at", auto_now_add=True)
+    updated_at = models.DateTimeField("updated at", auto_now=True)
+    payment_method = models.CharField("payment method", max_length=10, choices=PAYMENT_METHODS)
+    total = models.DecimalField("total", max_digits=10, decimal_places=2)
     
+    class Meta:
+        verbose_name = "Venda"  # Nome singular
+        verbose_name_plural = "Vendas"  # Nome plural
+        
+
