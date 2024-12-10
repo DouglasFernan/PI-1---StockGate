@@ -74,6 +74,12 @@ def ceo_gerenciar_produtos(request):
 
 
 @login_required
+def gerente_gerenciar_categorias(request):
+    return render(request, 'users/gerente/gerente_gerenciar_categorias.html')
+
+
+
+@login_required
 def ceo_gerenciar_categorias(request):
     return render(request, 'users/ceo/gerenciar_categorias.html')
 
