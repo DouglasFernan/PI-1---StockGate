@@ -2,9 +2,13 @@ from django.contrib.auth import logout
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.views.generic import FormView
+from django.views.generic import FormView, ListView
 from . import forms
+from . import models
 
+
+class UsersListView(ListView):
+    model = models.CustomUser
 
 # Create your views here.
 # ceo = CustomUser.objects.create(email="douglasgenetic@gmail.com",

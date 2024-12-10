@@ -12,7 +12,8 @@ urlpatterns = [
     path('ceo/dashboard/', views.ceo_dashboard, name='ceo_dashboard'),
     path('gerente/dashboard/', views.gerente_dashboard, name='gerente_dashboard'),
     path('vendedor/dashboard/', views.vendedor_dashboard, name='vendedor_dashboard'),
-    path('registration/', views.UserRegistration.as_view(), name='registration' )
+    path('registration/', views.UserRegistration.as_view(), name='registration' ),
+    path('usuarios/', views.UsersListView. as_view(), name="usuarios")
 ]
 
 if settings.DEBUG:

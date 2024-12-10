@@ -1,0 +1,53 @@
+{% extends 'users/ceo/base.html' %}
+{% load static %}
+{% block title %}Dashboard{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/ceo/customuser_list.css' %}">
+{% endblock %}
+{% block content %}
+<section id="core">
+    <h5>Usuários Cadastrados</h5>
+    <div id="users-container">
+        <ul id="users">
+            <!-- Títulos -->
+            <div class="user-titles">
+                <span class="title">USUÁRIO</span>
+                <span class="title empty"></span>
+                <span class="title">CARGO</span>
+                <span class="title">ÚLTIMO LOGIN</span>
+                <span class="title">AÇÕES</span>
+            </div>
+
+            <!-- Linhas dos usuários -->
+            {% for user in object_list %}
+                <div class="user-card">
+                    <div class="user-info">
+                        <!-- Foto do perfil -->
+                        <div class="user-photo">
+                            <img src="{{ user.profile_picture.url }}" alt="Foto de {{ user.name }}" />
+                        </div>
+                        <!-- Nome e email -->
+                        <div class="user-details">
+                            <span class="user-name">{{ user.name }}</span>
+                            <span class="user-email">{{ user.email }}</span>
+                        </div>
+                        <!-- Cargo -->
+                        <span class="user-group">{{ user.groups.first }}</span>
+                        <!-- Último login -->
+                        <span class="user-last-login">{{ user.last_login|date:"d-m-Y" }}</span>
+                        <!-- Botões -->
+                        <div class="user-actions">
+                            <button class="btn-edit">
+                                <img src="{% static 'images/ceo/edit.png' %}" alt="Edit"> Editar
+                            </button>
+                            <button class="btn-delete">
+                                <img src="{% static 'images/ceo/trub.png' %}" alt="Delete"> Deletar
+                            </button>
+                        </div>
+                    </div>    
+                </div>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+{% endblock %}

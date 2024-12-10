@@ -1,0 +1,151 @@
+.content {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    font-family: 'Epilogue', sans-serif;
+    max-height: 700px;
+}
+
+h3 {
+    font-size: 22px;
+    color: #5D7285;
+    margin-bottom: 15px;
+}
+
+h5 {
+    color: #2D3748;
+    margin-left: 25px;
+    margin-bottom: 10px;
+}
+
+#core {
+    max-width: 1170px;
+    height: 100%;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#users-container {
+    max-height: 500px;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+}
+
+#users {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.user-titles {
+    display: grid;
+    grid-template-columns: 50px 2fr 1fr 1fr 1fr; /* Estrutura das colunas */
+    gap: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+    position: -webkit-sticky; /* Para compatibilidade com navegadores Webkit */
+    position: sticky; /* Fixar os títulos ao rolar */
+    top: 0; /* Fixa no topo do contêiner */
+    background-color: #fff; /* Fundo branco para evitar sobreposição visual */
+    z-index: 10; /* Garante que os títulos fiquem acima dos outros elementos */
+    border-bottom: 2px solid #E2E8F0; /* Separação visual */
+    padding-bottom: 8px; /* Adiciona espaçamento inferior */
+}
+
+
+.title {
+    font-size: 12px;
+    color: #A0AEC0;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-bottom: 4px; /* Espaçamento adicional para o texto */
+    line-height: 1.4; /* Ajusta o espaçamento vertical do texto */
+}
+
+.title.empty {
+    visibility: hidden; /* Oculta o texto */
+}
+
+.user-card {
+    border: 1px solid #E2E8F0;
+    border-radius: 5px;
+    padding: 8px 12px;
+    background-color: #F9FAFB;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-info {
+    display: grid;
+    grid-template-columns: 50px 2fr 1fr 1fr 1fr; /* Foto, Nome+Email, Cargo, Último Login, Ações */
+    gap: 5px;
+    align-items: center;
+    width: 100%;
+}
+
+.user-photo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    text-align: left; /* Nome e email alinhados à esquerda */
+}
+
+.user-name {
+    font-size: 14px;
+    font-weight: bold;
+    color: #2D3748;
+}
+
+.user-email {
+    font-size: 12px;
+    color: #4A5568;
+}
+
+.user-group, .user-last-login {
+    font-size: 12px;
+    color: #4A5568;
+    text-align: center; /* Centraliza Cargo e Último Login */
+}
+
+.user-actions {
+    display: flex;
+    justify-content: center; /* Centraliza os botões */
+    gap: 10px;
+}
+
+.btn-edit, .btn-delete {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #E2E8F0;
+}
+
+.btn-edit {
+    color: #2B6CB0;
+}
+
+.btn-delete {
+    color: #E53E3E;
+    background-color: #FED7D7;
+}
+
+.btn-edit img, .btn-delete img {
+    width: 14px;
+    height: 14px;
+}

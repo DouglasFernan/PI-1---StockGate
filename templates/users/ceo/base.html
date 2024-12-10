@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Zen+Kaku+Gothic+Antique&display=swap" rel="stylesheet">
+    {% block head %}{% endblock %}
 </head>
 <body>
     <header id="header">
@@ -68,7 +69,7 @@
         <ul>
             <li><a href="#dashboard"><img src="{% static 'images/ceo/Home.png' %}" alt="Dashboard Icon">Dashboard</a></li>
             <li><a href="#historico"><img src="{% static 'images/ceo/Document.png' %}" alt="Histórico Icon">Histórico de Vendas</a></li>
-            <li><a href="#usuarios"><img src="{% static 'images/ceo/3 User.png' %}" alt="Usuários Icon">Gerenciar Usuários</a></li>
+            <li><a href="{% url "usuarios" %}"><img src="{% static 'images/ceo/3 User.png' %}" alt="Usuários Icon">Gerenciar Usuários</a></li>
             <li class="dropdown">
                 <a href="#produtos" class="dropdown-btn"><img src="{% static 'images/ceo/Bag.png' %}" alt="Produtos Icon">Gerenciar Produtos                        <img src="{% static 'images/ceo/down.png' %}" alt="Seta" style="width: auto; height: auto; margin-left: 10px;" />
                 </a>
