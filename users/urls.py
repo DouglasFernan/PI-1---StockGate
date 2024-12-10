@@ -13,7 +13,8 @@ urlpatterns = [
     path('gerente/dashboard/', views.gerente_dashboard, name='gerente_dashboard'),
     path('vendedor/dashboard/', views.vendedor_dashboard, name='vendedor_dashboard'),
     path('registration/', views.UserRegistration.as_view(), name='registration' ),
-    path('usuarios/', views.UsersListView. as_view(), name="usuarios")
+    path('usuarios/', views.UsersListView. as_view(), name="usuarios"),
+    path('gerenciar_produtos/', views.gerenciar_produtos, name="gerenciar-produtos"),
 ]
 
 if settings.DEBUG:

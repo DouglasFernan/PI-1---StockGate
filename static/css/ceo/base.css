@@ -219,3 +219,12 @@ section {
 .dropdown.active .dropdown-menu {
     display: block;
 }
+
+.content {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    font-family: 'Epilogue', sans-serif;
+    height: 90%;
+}
+

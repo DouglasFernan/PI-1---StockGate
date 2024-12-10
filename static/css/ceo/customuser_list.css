@@ -123,6 +123,10 @@ h5 {
     gap: 10px;
 }
 
+.user-actions a {
+    text-decoration: none;
+}
+
 .btn-edit, .btn-delete {
     display: flex;
     align-items: center;

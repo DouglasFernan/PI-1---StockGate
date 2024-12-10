@@ -58,6 +58,11 @@ class UserRegistration(FormView):
 
 
 @login_required
+def gerenciar_produtos(request):
+    return render(request, "users/ceo/gerenciar-produtos.html")
+
+
+@login_required
 def ceo_dashboard(request):
     return render(request, 'users/ceo/index.html')
 
