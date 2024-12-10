@@ -13,9 +13,11 @@ urlpatterns = [
     path('gerente/dashboard/', views.gerente_dashboard, name='gerente_dashboard'),
     path('vendedor/dashboard/', views.vendedor_dashboard, name='vendedor_dashboard'),
     path('registration/', views.UserRegistration.as_view(), name='registration' ),
-    path('usuarios/', views.UsersListView. as_view(), name="usuarios"),
-    path('gerenciar_produtos/', views.gerenciar_produtos, name="gerenciar-produtos"),
+    path('ceo/historico_de_vendas/', views.ceo_historico_de_vendas, name="historico_de_vendas"),
+    path('ceo/gerenciar_usuarios/', views.UsersListView. as_view(), name="gerenciar_usuarios"),
+    path('ceo/gerenciar_produtos/', views.ceo_gerenciar_produtos, name="gerenciar_produtos"),
+    path('ceo/gerenciar_categorias/', views.ceo_gerenciar_categorias, name="gerenciar_categorias"),
+    path('ceo/fornecedores/', views.ceo_fornecedores, name="fornecedores"),
 ]
-
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

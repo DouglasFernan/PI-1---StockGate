@@ -7,9 +7,6 @@ from . import forms
 from . import models
 
 
-class UsersListView(ListView):
-    model = models.CustomUser
-
 # Create your views here.
 # ceo = CustomUser.objects.create(email="douglasgenetic@gmail.com",
 #                                 name="Douglas Fernandes", cpf="13359863402")
@@ -58,13 +55,32 @@ class UserRegistration(FormView):
 
 
 @login_required
-def gerenciar_produtos(request):
-    return render(request, "users/ceo/gerenciar-produtos.html")
+def ceo_dashboard(request):
+    return render(request, 'users/ceo/dashboard.html')
 
 
 @login_required
-def ceo_dashboard(request):
-    return render(request, 'users/ceo/index.html')
+def ceo_historico_de_vendas(request):
+    return render(request, 'users/ceo/historico_de_vendas.html')
+
+
+class UsersListView(ListView):
+    model = models.CustomUser
+
+
+@login_required
+def ceo_gerenciar_produtos(request):
+    return render(request, "users/ceo/gerenciar_produtos.html")
+
+
+@login_required
+def ceo_gerenciar_categorias(request):
+    return render(request, 'users/ceo/gerenciar_categorias.html')
+
+
+@login_required
+def ceo_fornecedores(request):
+    return render(request, 'users/ceo/fornecedores.html')
 
 
 @login_required
