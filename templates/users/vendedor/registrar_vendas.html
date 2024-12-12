@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Stock Gate{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/vendedor/base.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Zen+Kaku+Gothic+Antique&display=swap" rel="stylesheet">
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <header id="header">
+        <div id="pic-profile">
+            {% if request.user.profile_picture %}
+                <img src="{{ request.user.profile_picture.url }}" alt="Profile Picture" style="max-width: 60px; max-height: 60px; border-radius: 50%;" />
+            {% else %}
+                <img src="{% static 'images/default.jpg' %}" alt="Default Profile Picture" style="max-width: 60px; max-height: 60px; border-radius: 50%;" />
+            {% endif %}
+        </div>
+        <div id="info">
+            <div id="openModalBtn">
+                <div>
+                    {% for group in request.user.groups.all %}
+                        <span onclick="toggleModal(event)">{{ group.name }} - {{ request.user.name }}</span>
+                        <img src="{% static 'images/ceo/down.png' %}" alt="Seta" style="width: auto; height: auto; margin-left: 10px;" />
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Modal Dropdown -->
+    <div id="modal" class="dropdown-modal">
+        <div class="modal-content">
+            <ul>
+                <li>
+                    <a href="#edit-profile">
+                        <img src="{% static 'images/icons/edit-profile.png' %}" alt="Edit Profile Icon" class="menu-icon"/>
+                        Edit Profile
+                    </a>
+                </li>
+                <li>
+                    <a href="#change-password">
+                        <img src="{% static 'images/icons/change-password.png' %}" alt="Change Password Icon" class="menu-icon"/>
+                        Change Password
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'logout' %}">
+                        <img src="{% static 'images/icons/logout.png' %}" alt="Logout Icon" class="menu-icon"/>
+                        Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <div id="logo">
+            <div id="logo-child"><img src="{% static 'images/logo.png' %}" alt="logo Stock Gate"></div>
+            <div id="logo-name">Stock Gate</div>
+        </div>
+        <ul>
+            <li><a href="{% url "ceo_dashboard" %}"><img src="{% static 'images/ceo/Home.png' %}" alt="Dashboard Icon">Registrar Vendas</a></li>
+            <li class="dropdown">
+                <a href="#produtos" class="dropdown-btn"><img src="{% static 'images/ceo/Bag.png' %}" alt="Produtos Icon">Consultar Produtos<img src="{% static 'images/ceo/down.png' %}" alt="Seta" style="width: auto; height: auto; margin-left: 10px;" />
+                </a>
+            </li>
+            <li><a href="{% url "gerenciar_usuarios" %}"><img src="{% static 'images/ceo/3 User.png' %}" alt="Usuários Icon">Clientes</a></li>
+            <li><a href="{% url "historico_de_vendas" %}"><img src="{% static 'images/ceo/Document.png' %}" alt="Histórico Icon">Minhas Vendas</a></li>
+
+            
+            
+        </ul>
+        <a class="logout-btn" href="{% url "logout" %}">
+            <img src="{% static 'images/ceo/Logout.png' %}"  alt="Ícone de Sair" class="logout-icon">
+            Sair
+        </a>
+    </div>
+
+    <div class="content">
+
+        <header class="header">
+            <h1>Registrar Vendas</h1>
+            <button class="btn-cadastrar-cliente">+ Cadastrar Cliente</button>
+        </header>
+        {% block content %}
+        <!-- O conteúdo específico de cada página será inserido aqui -->
+        <div class="container">
+    
+            <section class="dados-venda">
+                <h2>DADOS DA VENDA</h2>
+                <form class="form-venda">
+                    <div class="input-group">
+                        <input type="text" id="cliente" placeholder="Cliente" disabled>
+                    </div>
+                    <div class="input-group">
+                        
+                        <input type="email" id="email" placeholder="Email" disabled>
+                    </div>
+                    <div class="input-group">
+                        
+                        <input type="text" id="produto" placeholder="Valencia Jacket" disabled>
+                    </div>
+                    <div class="input-group">
+                       
+                        <input type="text" id="telefone" placeholder=" Telefone (00) 00000-0000" disabled>
+                    </div>
+                    <div class="input-group">
+                       
+                        <input type="text" id="cpf" placeholder=" CPF 000.000.000-00" disabled>
+                    </div>
+                    <div class="input-group">
+                        
+                        <input type="text" id="quantidade" placeholder="100 Disponíveis" disabled>
+                    </div>
+                    <div class="input-group">
+                      
+                        <input type="text" id="vendedor" placeholder="Nome do Vendedor" disabled>
+                    </div>
+                    <div class="input-group">
+                       
+                        <input type="text" id="Data de Compra DD/MM/aaaa" placeholder="Data de Compra DD/MM/aaaa" id="data-compra" disabled>
+                    </div>
+                    <div class="input-group">
+                        <label for="forma-pagamento">Forma de Pagamento</label>
+                        <div class="forma-pagamento">
+                            <img src="pix-icon.png" alt="Pix">
+                            <img src="cartao-icon.png" alt="Cartão">
+                            <img src="dinheiro-icon.png" alt="Dinheiro">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="total" placeholder="Total" disabled>
+                    </div>
+                    <button type="submit" class="btn-registrar-venda">REGISTRAR VENDA</button>
+                </form>
+            </section>
+        </div>
+        {% endblock %}
+    </div>
+
+    <script src="{% static 'js/ceo/base.js' %}"></script>
+</body>
+</html>

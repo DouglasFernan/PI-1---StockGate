@@ -12,6 +12,7 @@ urlpatterns = [
     path('ceo/dashboard/', views.ceo_dashboard, name='ceo_dashboard'),
     path('gerente/dashboard/', views.gerente_dashboard, name='gerente_dashboard'),
     path('gerente/gerenciar_categorias/', views.gerente_gerenciar_categorias, name="gerente_gerenciar_categorias"),
+    path('vendedor/registrar_vendas/', views.vendedor_registrar_vendas, name="vendedor_registrar_vendas"),
     path('vendedor/dashboard/', views.vendedor_dashboard, name='vendedor_dashboard'),
     path('registration/', views.UserRegistration.as_view(), name='registration' ),
     path('ceo/historico_de_vendas/', views.ceo_historico_de_vendas, name="historico_de_vendas"),

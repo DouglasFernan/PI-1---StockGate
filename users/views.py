@@ -97,3 +97,7 @@ def gerente_dashboard(request):
 @login_required
 def vendedor_dashboard(request):
     return render(request, 'users/vendedor/index.html')
+
+@login_required
+def vendedor_registrar_vendas(request):
+    return render(request, 'users/vendedor/registrar_vendas.html')
