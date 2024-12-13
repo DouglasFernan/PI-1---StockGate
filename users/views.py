@@ -74,6 +74,12 @@ def ceo_gerenciar_produtos(request):
 
 
 @login_required
+def gerente_gerenciar_categorias(request):
+    return render(request, 'users/gerente/gerente_gerenciar_categorias.html')
+
+
+
+@login_required
 def ceo_gerenciar_categorias(request):
     return render(request, 'users/ceo/gerenciar_categorias.html')
 
@@ -91,3 +97,7 @@ def gerente_dashboard(request):
 @login_required
 def vendedor_dashboard(request):
     return render(request, 'users/vendedor/index.html')
+
+@login_required
+def vendedor_registrar_vendas(request):
+    return render(request, 'users/vendedor/registrar_vendas.html')
