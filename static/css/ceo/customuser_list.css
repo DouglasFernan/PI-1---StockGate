@@ -46,13 +46,13 @@ h5 {
     gap: 5px;
     margin-bottom: 10px;
     text-align: center;
-    position: -webkit-sticky; /* Para compatibilidade com navegadores Webkit */
-    position: sticky; /* Fixar os títulos ao rolar */
-    top: 0; /* Fixa no topo do contêiner */
-    background-color: #fff; /* Fundo branco para evitar sobreposição visual */
-    z-index: 10; /* Garante que os títulos fiquem acima dos outros elementos */
-    border-bottom: 2px solid #E2E8F0; /* Separação visual */
-    padding-bottom: 8px; /* Adiciona espaçamento inferior */
+    position: -webkit-sticky; 
+    position: sticky; 
+    top: 0; 
+    background-color: #fff;
+    z-index: 10; 
+    border-bottom: 2px solid #E2E8F0; 
+    padding-bottom: 8px; 
 }
 
 
@@ -61,12 +61,12 @@ h5 {
     color: #A0AEC0;
     font-weight: bold;
     text-transform: uppercase;
-    padding-bottom: 4px; /* Espaçamento adicional para o texto */
-    line-height: 1.4; /* Ajusta o espaçamento vertical do texto */
+    padding-bottom: 4px; 
+    line-height: 1.4; 
 }
 
 .title.empty {
-    visibility: hidden; /* Oculta o texto */
+    visibility: hidden; 
 }
 
 .user-card {
@@ -81,7 +81,7 @@ h5 {
 
 .user-info {
     display: grid;
-    grid-template-columns: 50px 2fr 1fr 1fr 1fr; /* Foto, Nome+Email, Cargo, Último Login, Ações */
+    grid-template-columns: 50px 2fr 1fr 1fr 1fr; /* Nome+Email, Cargo, Último Login, Ações */
     gap: 5px;
     align-items: center;
     width: 100%;
@@ -114,12 +114,12 @@ h5 {
 .user-group, .user-last-login {
     font-size: 12px;
     color: #4A5568;
-    text-align: center; /* Centraliza Cargo e Último Login */
+    text-align: center;
 }
 
 .user-actions {
     display: flex;
-    justify-content: center; /* Centraliza os botões */
+    justify-content: center; 
     gap: 10px;
 }
 
