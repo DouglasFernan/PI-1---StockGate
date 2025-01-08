@@ -67,6 +67,9 @@ def ceo_historico_de_vendas(request):
 class UsersListView(ListView):
     model = models.CustomUser
 
+class FornecedorListView(ListView):
+    model = models.Fornecedor
+
 
 @login_required
 def ceo_gerenciar_produtos(request):
@@ -78,9 +81,9 @@ def ceo_gerenciar_categorias(request):
     return render(request, 'users/ceo/gerenciar_categorias.html')
 
 
-@login_required
-def ceo_fornecedores(request):
-    return render(request, 'users/ceo/fornecedores.html')
+# @login_required
+# def ceo_fornecedores(request):
+#     return render(request, 'users/ceo/fornecedores.html')
 
 
 @login_required

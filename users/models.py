@@ -53,7 +53,7 @@ class CustomUser(AbstractUser):
     
 class Fornecedor(models.Model):
     name = models.CharField("name", max_length=100)
-    empresa = models.CharField("company name", max_length=100)
+    company = models.CharField("company name", max_length=100)
     email = models.EmailField("email", max_length=254, unique=True)
     description = models.TextField("description", blank=True)
 

@@ -1,33 +1,33 @@
 {% extends 'users/ceo/base.html' %}
 {% load static %}
-{% block title %}Gerenciar Usuários{% endblock %}
+{% block title %}Gerenciar Fornecedores{% endblock %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/ceo/customuser_list.css' %}">
+<link rel="stylesheet" href="{% static 'css/ceo/fornecedores.css' %}">
 {% endblock %}
 {% block content %}
 <section id="core">
-    <h5>Gerenciar Usuários</h5>
+    <h5>Fornecedores</h5>
     <div id="users-container">
         <ul id="users">
-            <div class="user-titles">
-                <span class="title">USUÁRIO</span>
+            <!-- <div class="user-titles">
+                <span class="title">CONTATOS</span>
                 <span class="title empty"></span>
-                <span class="title">CARGO</span>
-                <span class="title">ÚLTIMO LOGIN</span>
+                <span class="title empty"></span>
+                <span class="title empty"></span>
                 <span class="title">AÇÕES</span>
-            </div>
+            </div> -->
 
             {% for user in object_list %}
                 <div class="user-card">
                     <div class="user-info">
-                        <div class="user-photo">
-                            <img src="{{ user.profile_picture.url }}" alt="Foto de {{ user.name }}" />
-                        </div>
                         <div class="user-details">
-                            <span class="user-name">{{ user.name }}</span>
-                            <span class="user-email">{{ user.email }}</span>
+                            <span id="name" class="user-name">{{ user.name }}</span>
+                            <span class="user-name"><span style="font-size: 14px; color: #A0AEC0; font-weight: 400;">Empresa: </span>{{ user.company }}</span>
+                            <span class="user-name"><span style="font-size: 14px; color: #A0AEC0; font-weight: 400;">Email: </span>{{ user.email }}</span>
+                            <span class="user-name"><span style="font-size: 14px; color: #A0AEC0; font-weight: 400;">Descrição: </span>{{ user.description }}</span>
                         </div>
-                        <span class="user-group">{{ user.groups.first }}</span>
+                        <div></div>
+                        <span></span>
                         <span class="user-last-login">{{ user.last_login|date:"d-m-Y" }}</span>
                         <div class="user-actions">
                             <a href="">

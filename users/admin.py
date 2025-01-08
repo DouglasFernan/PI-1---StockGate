@@ -34,9 +34,9 @@ class CustomUserAdmin(UserAdmin):
 
 @admin.register(Fornecedor)
 class FornecedorAdmin(admin.ModelAdmin):
-    list_display = ("name", "empresa", "email", "description")
-    search_fields = ("name", "empresa", "email")
-    list_filter = ("empresa",)
+    list_display = ("name", "company", "email", "description")
+    search_fields = ("name", "company", "email")
+    list_filter = ("company",)
 
 
 @admin.register(Categoria)

@@ -6,21 +6,16 @@
     height: 90%;
 }
 
-h3 {
-    font-size: 22px;
-    color: #5D7285;
-    margin-bottom: 15px;
-}
-
 h5 {
-    color: #2D3748;
-    margin-left: 25px;
+    color: #5D7285;
+    margin-left: 35px;
     margin-bottom: 10px;
+    font-size: 20px;
 }
 
 #core {
-    max-width: 75%;
-    max-height: 75%;
+    width: calc(100% - 370px);
+    height: calc(100% - 150px);
     background-color: #fff;
     padding: 15px;
     border-radius: 8px;
@@ -38,4 +33,119 @@ h5 {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+/* .user-titles {
+    display: grid;
+    grid-template-columns: 50px 2fr 1fr 1fr 1fr; 
+    margin-bottom: 10px;
+    text-align: center;
+    position: -webkit-sticky; 
+    position: sticky; 
+    top: 0; 
+    background-color: #fff;
+    z-index: 10; 
+    border-bottom: 2px solid #E2E8F0; 
+    padding-bottom: 8px; 
+} */
+
+
+/* .title {
+    font-size: 12px;
+    color: #A0AEC0;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-bottom: 4px; 
+    line-height: 1.4; 
+} */
+
+.title.empty {
+    visibility: hidden; 
+}
+
+#name{
+    margin-bottom: 15px;
+}
+
+.user-card {
+    height: 120px;
+    border: 1px solid #E2E8F0;
+    border-radius: 5px;
+    padding: 8px 12px;
+    background-color: #F9FAFB;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-info {
+    display: grid;
+    grid-template-columns:  2fr 50px 1fr 1fr 1fr; /* Nome+Email, Cargo, Último Login, Ações */
+    align-items: center;
+    width: 100%;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    text-align: left; /* Nome e email alinhados à esquerda */
+    gap: 5px;
+}
+
+.user-details span{
+    color: #718096;
+}
+
+.user-name {
+    font-size: 14px;
+    font-weight: bold;
+    color: #2D3748;
+}
+
+.user-email {
+    font-size: 12px;
+    color: #4A5568;
+}
+
+.user-group, .user-last-login {
+    font-size: 12px;
+    color: #4A5568;
+    text-align: center;
+}
+
+.user-actions {
+    display: flex;
+    justify-content: center; 
+    gap: 10px;
+}
+
+.user-actions a {
+    text-decoration: none;
+}
+
+.btn-edit, .btn-delete {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #E2E8F0;
+}
+
+.btn-edit {
+    color: #2B6CB0;
+}
+
+.btn-delete {
+    color: #E53E3E;
+    background-color: #FED7D7;
+}
+
+.btn-edit img, .btn-delete img {
+    width: 14px;
+    height: 14px;
 }
